@@ -10,7 +10,7 @@
 
 Leakage-free `sklearn` pipeline · character n-gram TF-IDF · stratified CV model selection · FastAPI · Docker · pytest + GitHub Actions.
 
-> دیتاست نمونه برای تیکت پشتیبانی فارسی (صورتحساب، فنی، فروش، لغو، سایر) به‌صورت داخلی تولید می‌شود — بدون وابستگی به داده‌های دارای حق نشر.
+> Sample support-ticket dataset (billing, technical, sales, cancellation, other) is generated in-repo — no third-party copyrighted text required.
 
 ---
 
@@ -27,13 +27,13 @@ Leakage-free `sklearn` pipeline · character n-gram TF-IDF · stratified CV mode
 
 ### Labels
 
-| ID | فارسی |
-|----|--------|
-| `billing` | صورتحساب و پرداخت |
-| `technical` | مشکل فنی |
-| `sales` | فروش و پلن |
-| `cancellation` | لغو سرویس |
-| `other` | سایر |
+| ID | Meaning |
+|----|---------|
+| `billing` | Billing and payments |
+| `technical` | Technical issues |
+| `sales` | Sales and plans |
+| `cancellation` | Service cancellation |
+| `other` | Other |
 
 ---
 
@@ -74,7 +74,7 @@ API docs: http://localhost:8000/docs
 ```bash
 curl -s http://localhost:8000/predict \
   -H 'Content-Type: application/json' \
-  -d '{"text": "اینترنت از صبح قطع است و مودم وصل نمی‌شود"}'
+  -d '{"text": "Internet has been down since morning and the modem will not connect"}'
 ```
 
 ### Docker
