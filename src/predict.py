@@ -7,7 +7,7 @@ from typing import Any
 import joblib
 import numpy as np
 
-from src.config import LABEL_FA, PIPELINE_FILE
+from src.config import LABEL_EN, PIPELINE_FILE
 
 
 class TextClassifier:
@@ -28,9 +28,7 @@ class TextClassifier:
         if hasattr(clf, "decision_function"):
             scores = clf.decision_function(features)
             if scores.ndim == 1:
-                # binary margin
                 return [float(1 / (1 + np.exp(-abs(s)))) for s in scores]
-            # multiclass: softmax over margins
             exp = np.exp(scores - scores.max(axis=1, keepdims=True))
             proba = exp / exp.sum(axis=1, keepdims=True)
             return [float(np.max(row)) for row in proba]
@@ -41,7 +39,7 @@ class TextClassifier:
         confidence = self._decision_confidence([text])[0]
         return {
             "label": label,
-            "label_fa": LABEL_FA.get(label, label),
+            "label_name": LABEL_EN.get(label, label),
             "confidence": round(confidence, 4),
             "text": text,
         }
@@ -52,7 +50,7 @@ class TextClassifier:
         return [
             {
                 "label": lab,
-                "label_fa": LABEL_FA.get(lab, lab),
+                "label_name": LABEL_EN.get(lab, lab),
                 "confidence": round(conf, 4),
                 "text": txt,
             }
