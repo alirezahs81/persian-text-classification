@@ -34,7 +34,7 @@ def test_predict(client):
         "cancellation",
         "other",
     }
-    assert "label_fa" in body
+    assert "label_name" in body
 
 
 def test_predict_batch(client):
