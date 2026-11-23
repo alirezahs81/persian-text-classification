@@ -27,7 +27,11 @@ def get_classifier() -> TextClassifier:
 
 
 class TextIn(BaseModel):
-    text: str = Field(..., min_length=1, examples=["اینترنت از صبح قطع است"])
+    text: str = Field(
+        ...,
+        min_length=1,
+        examples=["Internet has been down since morning"],
+    )
 
 
 class BatchIn(BaseModel):
@@ -36,7 +40,7 @@ class BatchIn(BaseModel):
 
 class PredictionOut(BaseModel):
     label: str
-    label_fa: str
+    label_name: str
     confidence: float
     text: str
 
