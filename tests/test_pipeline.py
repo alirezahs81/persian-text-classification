@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-import json
-
 import pytest
 
 from src.config import LABEL_COLUMN, LABELS, PIPELINE_FILE, TEXT_COLUMN
@@ -12,7 +10,6 @@ from src.train import train
 
 @pytest.fixture(scope="module")
 def trained(tmp_path_factory):
-    # Train once for this module; artifacts land in real models/ for API tests too
     result = train(persist=True, cv_folds=3)
     return result
 
@@ -48,7 +45,7 @@ def test_predict_labels(trained):
         out = clf.predict_one(text)
         assert out["label"] == expected
         assert 0.0 <= out["confidence"] <= 1.0
-        assert out["label_fa"]
+        assert out["label_name"]
 
 
 def test_predict_many(trained):
