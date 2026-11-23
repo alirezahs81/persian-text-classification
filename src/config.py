@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parents[1]
@@ -21,22 +20,25 @@ RANDOM_STATE = 42
 TEST_SIZE = 0.2
 CV_FOLDS = 5
 
-# Intent / complaint categories (Persian support tickets)
+# Intent / complaint categories for support tickets
 LABELS = [
-    "billing",          # صورتحساب و پرداخت
-    "technical",        # قطعی / سرعت / فنی
-    "sales",            # خرید / ارتقا پلن
-    "cancellation",     # لغو سرویس
-    "other",            # سایر
+    "billing",
+    "technical",
+    "sales",
+    "cancellation",
+    "other",
 ]
 
-LABEL_FA = {
-    "billing": "صورتحساب و پرداخت",
-    "technical": "مشکل فنی",
-    "sales": "فروش و پلن",
-    "cancellation": "لغو سرویس",
-    "other": "سایر",
+LABEL_EN = {
+    "billing": "Billing and payments",
+    "technical": "Technical issues",
+    "sales": "Sales and plans",
+    "cancellation": "Service cancellation",
+    "other": "Other",
 }
+
+# Backward-compatible alias used by predict/API
+LABEL_FA = LABEL_EN
 
 TEXT_COLUMN = "text"
 LABEL_COLUMN = "label"
